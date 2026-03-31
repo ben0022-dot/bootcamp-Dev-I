@@ -1,0 +1,59 @@
+// Part I: One-time alert after 2 seconds
+setTimeout(function() {
+    alert("Hello World");
+}, 2000);
+
+// Part II & III: Adding paragraphs and handling intervals
+const container = document.getElementById('container');
+const clearBtn = document.getElementById('clear');
+
+// We define the function to add a paragraph separately to keep things clean
+function addParagraph() {
+    const newP = document.createElement('p');
+    newP.textContent = "Hello World";
+    container.appendChild(newP);
+
+    // Part III: Clear the interval if 5 paragraphs are reached
+    const pCount = container.querySelectorAll('p').length;
+    if (pCount >= 5) {
+        stopInterval();
+    }
+}
+
+// setTimeout for Part II
+setTimeout(addParagraph, 2000);
+
+// setInterval for Part III
+let intervalId = setInterval(addParagraph, 2000);
+
+// Function to stop the timer
+function stopInterval() {
+    clearInterval(intervalId);
+    console.log("Interval cleared!");
+}
+
+// Event listener for the button to clear the interval manually
+clearBtn.addEventListener('click', stopInterval);
+
+function myMove() {
+    const animateBox = document.getElementById('animate');
+    const container = document.getElementById('container');
+    
+    let position = 0;
+    
+    // Calculate the "end" point: Container width (400) minus Box width (50)
+    const limit = container.offsetWidth - animateBox.offsetWidth;
+
+    // Start the interval
+    const timer = setInterval(function() {
+        if (position >= limit) {
+            // Stop the interval when the box hits the right edge
+            clearInterval(timer);
+        } else {
+            // Increment the position and update the style
+            position++;
+            animateBox.style.left = position + 'px';
+        }
+    }, 1); // 1ms interval for smooth movement
+}
+
