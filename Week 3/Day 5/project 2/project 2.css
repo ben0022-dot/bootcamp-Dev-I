@@ -1,0 +1,24 @@
+body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+.container { max-width: 400px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+.listTasks { margin-top: 20px; }
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.task-item i {
+    color: #ff4d4d;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.task-text { margin-left: 10px; flex-grow: 1; }
+
+/* Bonus I styling: Cross out and turn red */
+.is-done {
+    text-decoration: line-through;
+    color: red;
+}
